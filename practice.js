@@ -10,11 +10,11 @@ var outer = function(){
 //Invoke outer saving the return value into another variable called 'inner'.
 
   //Code Here
-
+var inner = outer();
 //Once you do that, invoke inner.
 
   //Code Here
-
+inner();
 
 
 //Next problem
@@ -33,7 +33,8 @@ var callFriend = function(){
 //Do what you need to do in order to call your function and get 'Calling Jake at 435-215-9248' in your console.
 
   //Code Here
-
+var callingFN = callFriend();
+console.log(callingFN('435-215-9248'));
 
 
 //Next Problem
@@ -44,7 +45,13 @@ var callFriend = function(){
   Write a function called makeCounter that makes the following code work properly.
 */
 
-  //Code Here
+function makeCounter() {
+  var count = 0;
+  return function () {
+    count++;
+    return count;
+  }
+}
   var count = makeCounter();
   count() // 1
   count() // 2
@@ -64,6 +71,14 @@ var callFriend = function(){
   After the function has been called N number of times, console.log('STAHHP');
 */
 
-
-
-
+function primeFn (fn, num) {
+  var count = 0;
+  return function () {
+    if (count < num) {
+      fn();
+      count++;
+    } else {
+      console.log('STAHHP');
+    }
+  }
+}
